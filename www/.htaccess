@@ -1,0 +1,8 @@
+<IfModule mod_rewrite.c>
+
+RewriteEngine On
+
+RewriteRule ^/(break-it-down)/index\.php\?(.*) /$1/$2 [R=301,L]
+
+</IfModule>
+

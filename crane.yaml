@@ -1,0 +1,17 @@
+- name: symfony2_server
+  dockerfile: apache-mysql-base
+  image: michaelsauter/apache-mysql-base
+  run:
+    volume: ["www:/var/www"]
+    publish: ["49080:80"]
+    interactive: true
+    tty: true
+    link: ["symfony2_db:db"]
+    env: ["DB_NAME=symfony", "DB_USER=symfony", "DB_PASS=symfony"]
+
+- name: symfony2_db
+  image: orchardup/mysql
+  run:
+    publish: ["49336:3306"]
+    env: ["MYSQL_ROOT_PASSWORD=root", "MYSQL_DATABASE=symfony", "MYSQL_USER=symfony", "MYSQL_PASSWORD=symfony"]
+    detach: true
